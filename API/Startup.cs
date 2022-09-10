@@ -35,6 +35,8 @@ namespace API
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddControllers();
+            //Ordering is not important here. However, it is in Configure
+            services.AddCors();
             
         }
 
@@ -50,6 +52,9 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //Ordering is important in this method, we have to use app.UseCors() inbetween app.UseRouting() and app.UseEndpoints(). Use before, app.UseAuthentication, if you have authentication.
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthorization();
 
