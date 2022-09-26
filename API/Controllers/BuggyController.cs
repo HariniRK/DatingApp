@@ -40,7 +40,9 @@ namespace API.Controllers
         public ActionResult<string> GetServerError()
         {
             var thing = _context.Users.Find(-1);
+
             var thingToReturn = thing.ToString();
+            
             return thingToReturn;
         }
 
