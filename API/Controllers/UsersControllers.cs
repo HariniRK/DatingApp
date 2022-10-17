@@ -14,12 +14,12 @@ using AutoMapper;
 namespace API.Controllers
 {
     [Authorize]
-    public class UsersControllers : BaseApiController
+    public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public UsersControllers(IUserRepository userRepository, IMapper mapper)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             _mapper = mapper;
             _userRepository = userRepository;
