@@ -6,17 +6,17 @@
         <!--use ng-container, when you want to apply a conditional  to something because it's not gonna interfere in any of your styling in html-->
         <ng-container *ngIf="accountService.currentUser$ | async">
           <li class="nav-item ">
-            <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
+            <a class="nav-link" routerLink='/members' routerLinkActive='active'>Matches</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
+            <a class="nav-link" routerLink='/lists' routerLinkActive='active'>Lists</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
+            <a class="nav-link" routerLink='/messages' routerLinkActive='active'>Messages</a>
           </li>
         </ng-container>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
+          <a class="nav-link" routerLink='/errors' routerLinkActive='active'>Errors</a>
         </li>
         
       </ul>
@@ -24,7 +24,7 @@
       <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username | titlecase}}</a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item">Edit Profile</a>
+        <a routerLink="/member/edit" class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()">Logout</a>
 
