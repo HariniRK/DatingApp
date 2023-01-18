@@ -16,11 +16,10 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./member-list.component.css']
 })
 export class MemberListComponent implements OnInit {
- // members$: Observabl e<Member[]>;
+ // members$: Observabl e<Member[]> | undefined;
   members: Member[] = [];
   pagination: Pagination | undefined;
   userParams: UserParams | undefined;
-  user: User | undefined;
   genderList = [{value: 'male', display: 'Males'}, {value: 'female', display: 'Females'}]
 
   constructor(private memberService: MembersService) {
@@ -28,7 +27,7 @@ export class MemberListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   //this.members$ = this.memberService.getMembers();
+   //this.members$ = this.memberSe rvice.getMembers();
    this.loadMembers();
   }
 
@@ -48,8 +47,8 @@ export class MemberListComponent implements OnInit {
   }
   
   resetFilters() {
-    this.userParams = this.memberService.resetUserParams();
-    this.loadMembers();
+      this.userParams = this.memberService.resetUserParams();
+      this.loadMembers();
   }
 
   pageChanged(event: any) {

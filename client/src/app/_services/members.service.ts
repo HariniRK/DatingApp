@@ -18,10 +18,11 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCache = new Map();
-  userParams: UserParams | undefined;
   user: User | undefined;
+  userParams: UserParams | undefined;
 
   paginatedResult: PaginatedResult<Member[]> = new PaginatedResult<Member[]> ();
+
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => {
@@ -44,7 +45,7 @@ export class MembersService {
   resetUserParams() {
     if (this.user) {
       this.userParams = new UserParams(this.user);
-      return this.user;
+      return this.userParams;
     }
     return;
   }
